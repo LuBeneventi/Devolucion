@@ -17,13 +17,13 @@ import com.MSDevolucion.Devolucion.model.Devolucion;
 import com.MSDevolucion.Devolucion.service.devolucionService;
 
 @RestController
-@RequestMapping("api/Devoluciones")
+@RequestMapping("api/Ddevoluciones")
 public class devolucionController {
 
     @Autowired
     private devolucionService dService;
 
-    @PostMapping("/Generar")
+    @PostMapping("/generar")
     public ResponseEntity<Devolucion> crear(@RequestBody Devolucion devolucion) {
         return ResponseEntity.ok(dService.crear(devolucion));
     }
@@ -46,7 +46,7 @@ public class devolucionController {
         }
     }
 
-    @PutMapping("/Aceptar/{id}")
+    @PutMapping("/aceptar/{id}")
     public ResponseEntity<Devolucion> aceptar(@PathVariable int id) {
         try {
             return ResponseEntity.ok(dService.aceptar(id));
@@ -55,7 +55,7 @@ public class devolucionController {
         }
     }
 
-    @PutMapping("/Cancelar/{id}")
+    @PutMapping("/cancelar/{id}")
     public ResponseEntity<Devolucion> cancelar(@PathVariable int id) {
         try {
             return ResponseEntity.ok(dService.cancelar(id));
@@ -66,7 +66,7 @@ public class devolucionController {
         }
     }
 
-    @GetMapping("/Cliente: {idCliente}")
+    @GetMapping("/cliente/{idCliente}")
     public ResponseEntity<List<Devolucion>> listarPorCliente(@PathVariable int idCliente) {
 
         List<Devolucion> devoluciones = dService.listarPorCliente(idCliente);
