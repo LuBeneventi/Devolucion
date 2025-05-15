@@ -46,7 +46,7 @@ public class devolucionController {
         }
     }
 
-    @PutMapping("/aceptar/{id}")
+    @PutMapping("/{id}/aceptar")
     public ResponseEntity<Devolucion> aceptar(@PathVariable int id) {
         try {
             return ResponseEntity.ok(dService.aceptar(id));
@@ -55,7 +55,7 @@ public class devolucionController {
         }
     }
 
-    @PutMapping("/cancelar/{id}")
+    @PutMapping("/{id}/cancelar")
     public ResponseEntity<Devolucion> cancelar(@PathVariable int id) {
         try {
             return ResponseEntity.ok(dService.cancelar(id));
