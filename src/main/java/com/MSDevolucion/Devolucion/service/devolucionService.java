@@ -55,7 +55,7 @@ public class devolucionService {
         return dRepo.findAll();
     }
 
-    public List<Devolucion> listarPorCliente(int idCliente) {
-        return dRepo.findByIdCliente(idCliente);
+    public List<Devolucion> listarPorVenta(int idVenta) {
+        return dRepo.findByIdVenta(idVenta);
     }
 }

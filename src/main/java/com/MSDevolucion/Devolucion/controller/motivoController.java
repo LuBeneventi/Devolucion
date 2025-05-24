@@ -17,7 +17,7 @@ import com.MSDevolucion.Devolucion.model.motivoDevolucion;
 import com.MSDevolucion.Devolucion.service.motivoService;
 
 @RestController
-@RequestMapping("/api/Motivos")
+@RequestMapping("/api/motivos")
 public class motivoController {
     
     @Autowired
@@ -35,7 +35,7 @@ public class motivoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/Generar")
+    @PostMapping("/generar")
     public ResponseEntity<motivoDevolucion> crearMotivo(@RequestBody motivoDevolucion motivo) {
         if (motivo.getDescripcion() == null || motivo.getDescripcion().isBlank()) {
             return ResponseEntity.badRequest().build();
@@ -43,7 +43,7 @@ public class motivoController {
         return ResponseEntity.ok(mService.guardar(motivo));
     }
 
-    @PutMapping("/Editar/{id}")
+    @PutMapping("/{id}/editar")
     public ResponseEntity<motivoDevolucion> actualizarMotivo(@PathVariable int id, @RequestBody motivoDevolucion motivo) {
         if (motivo.getDescripcion() == null || motivo.getDescripcion().isBlank()) {
             return ResponseEntity.badRequest().build();
@@ -53,7 +53,7 @@ public class motivoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/Borrar/{id}")
+    @DeleteMapping("/{id}/borrar")
     public ResponseEntity<Void> eliminarMotivo(@PathVariable int id) {
         return mService.eliminar(id)
                 ? ResponseEntity.noContent().build()

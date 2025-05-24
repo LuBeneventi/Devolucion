@@ -17,7 +17,7 @@ import com.MSDevolucion.Devolucion.model.Devolucion;
 import com.MSDevolucion.Devolucion.service.devolucionService;
 
 @RestController
-@RequestMapping("api/Ddevoluciones")
+@RequestMapping("api/devoluciones")
 public class devolucionController {
 
     @Autowired
@@ -66,14 +66,14 @@ public class devolucionController {
         }
     }
 
-    @GetMapping("/cliente/{idCliente}")
-    public ResponseEntity<List<Devolucion>> listarPorCliente(@PathVariable int idCliente) {
+    @GetMapping("/venta/{idVenta}")
+    public ResponseEntity<List<Devolucion>> listarPorCliente(@PathVariable int idVenta) {
 
-        List<Devolucion> devoluciones = dService.listarPorCliente(idCliente);
+        List<Devolucion> devoluciones = dService.listarPorVenta(idVenta);
         if (devoluciones.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            return ResponseEntity.ok(dService.listarPorCliente(idCliente));
+            return ResponseEntity.ok(dService.listarPorVenta(idVenta));
         }
     }
 }
