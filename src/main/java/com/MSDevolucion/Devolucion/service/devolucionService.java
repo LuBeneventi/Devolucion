@@ -42,6 +42,15 @@ public class devolucionService {
         return dRepo.save(d);
     }
 
+    public Devolucion terminar(int id){
+        Devolucion d = dRepo.findById(id).orElseThrow();
+        if(d.getEstado() == estadoDev.ACEPTADA){
+            d.setEstado(estadoDev.TERMINADA);
+            return dRepo.save(d);
+        }
+        throw new IllegalStateException("Solo se pueden terminar solicitudes aceptadas");
+    }
+
     public Devolucion cancelar(int id) {
         Devolucion d = dRepo.findById(id).orElseThrow();
         if (d.getEstado() == estadoDev.SOLICITADA) {
@@ -57,5 +66,18 @@ public class devolucionService {
 
     public List<Devolucion> listarPorVenta(int idVenta) {
         return dRepo.findByIdVenta(idVenta);
+    }
+
+    public Devolucion editarDevolucion(Devolucion dev){
+        return dRepo.save(dev);
+    }
+
+    public Boolean eliminar(int id){
+        Devolucion d = dRepo.findById(id).orElseThrow();
+        if(dRepo.existsById(id) && (d.getEstado() == estadoDev.CANCELADA) || d.getEstado() == estadoDev.TERMINADA){
+            dRepo.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
