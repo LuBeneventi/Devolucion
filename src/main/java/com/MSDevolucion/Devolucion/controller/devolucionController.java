@@ -1,6 +1,8 @@
 package com.MSDevolucion.Devolucion.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,7 +56,7 @@ public class devolucionController {
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
-    }   
+    }
 
     @PutMapping("/{id}/terminar")
     public ResponseEntity<Devolucion> terminar(@PathVariable int id) {
@@ -64,18 +66,30 @@ public class devolucionController {
             return ResponseEntity.notFound().build();
         }
     }
-    
+
     @PutMapping("/{id}/editar")
-    public ResponseEntity<Devolucion> editar(@RequestBody Devolucion devolucion, @PathVariable int id){
-        devolucion.setIdDev(id);
-        return ResponseEntity.ok(dService.editarDevolucion(devolucion));
+    public ResponseEntity<Devolucion> editarDevolucion(@PathVariable Integer id, @RequestBody Devolucion nuevaDev) {
+        return dService.buscarPorId(id)
+                .map(devExistente -> {
+                    // Campos editables
+                    devExistente.setComentario(nuevaDev.getComentario());
+                    devExistente.setRazon(nuevaDev.getRazon());
+                    devExistente.setProductos(nuevaDev.getProductos());
+
+                    Devolucion actualizada = dService.crear(devExistente);
+                    return ResponseEntity.ok(actualizada);
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}/eliminar")
-    public ResponseEntity<Void> eliminarDevolucion(@PathVariable int id) {
-        return dService.eliminar(id)
-                ? ResponseEntity.noContent().build()
-                : ResponseEntity.notFound().build();
+    public ResponseEntity<?> eliminarDevolucion(@PathVariable int id) {
+        try {
+            dService.eliminar(id);
+            return ResponseEntity.noContent().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMessage()));
+        }
     }
 
     @PutMapping("/{id}/cancelar")
