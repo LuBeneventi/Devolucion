@@ -3,8 +3,8 @@ package com.MSDevolucion.Devolucion.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,8 @@ public class Devolucion {
     @Column(nullable = false)
     private int idVenta;
 
-    @ElementCollection
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "devolucion_id")
     private List<productoDevuelto> productos;
 
     @ManyToOne
@@ -39,6 +41,7 @@ public class Devolucion {
     @Column(nullable = true, length = 250)
     private String comentario;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private estadoDev estado;
 

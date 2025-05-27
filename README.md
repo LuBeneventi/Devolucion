@@ -35,20 +35,21 @@ INSERT INTO `devolucion` (`fecha_emision`, `id_dev`, `id_motivo`, `id_venta`, `c
 VALUES ('2025-05-24', 305, 5, 505, 'Me llegó un producto completamente distinto al que pedí.', 'ACEPTADA');
 
 
-INSERT INTO `devolucion_productos` (`cantidad`, `devolucion_id_dev`, `id_producto`)
-VALUES (1, 301, 601);
+INSERT INTO `producto_devuelto` (`id`, `cantidad`, `id_producto`, `devolucion_id`) 
+VALUES (1, 2, 101, 301);
 
-INSERT INTO `devolucion_productos` (`cantidad`, `devolucion_id_dev`, `id_producto`)
-VALUES (2, 302, 602);
+INSERT INTO `producto_devuelto` (`id`, `cantidad`, `id_producto`, `devolucion_id`) 
+VALUES (2, 1, 104, 302);
 
-INSERT INTO `devolucion_productos` (`cantidad`, `devolucion_id_dev`, `id_producto`)
-VALUES (1, 303, 603);
+INSERT INTO `producto_devuelto` (`id`, `cantidad`, `id_producto`, `devolucion_id`) 
+VALUES (3, 3, 110, 303);
 
-INSERT INTO `devolucion_productos` (`cantidad`, `devolucion_id_dev`, `id_producto`)
-VALUES (3, 304, 604);
+INSERT INTO `producto_devuelto` (`id`, `cantidad`, `id_producto`, `devolucion_id`) 
+VALUES (4, 5, 115, 304);
 
-INSERT INTO `devolucion_productos` (`cantidad`, `devolucion_id_dev`, `id_producto`)
-VALUES (1, 305, 605);
+INSERT INTO `producto_devuelto` (`id`, `cantidad`, `id_producto`, `devolucion_id`) 
+VALUES (5, 2, 120, 305);
+
 
 {
 "idVenta": 1,
