@@ -20,19 +20,19 @@ VALUES (5, 'Recibí un producto diferente al solicitado');
 
 ##DEVOLUCION
 INSERT INTO `devolucion` (`fecha_emision`, `id_dev`, `id_motivo`, `id_venta`, `comentario`, `estado`)
-VALUES ('2025-05-20', 301, 1, 501, 'El producto llegó roto y con la caja abierta.', 'Pendiente');
+VALUES ('2025-05-20', 301, 1, 501, 'El producto llegó roto y con la caja abierta.', 'SOLICITADA');
 
 INSERT INTO `devolucion` (`fecha_emision`, `id_dev`, `id_motivo`, `id_venta`, `comentario`, `estado`)
-VALUES ('2025-05-21', 302, 2, 502, 'El artículo no es como se describe en la tienda.', 'Aprobado');
+VALUES ('2025-05-21', 302, 2, 502, 'El artículo no es como se describe en la tienda.', 'ACEPTADA');
 
 INSERT INTO `devolucion` (`fecha_emision`, `id_dev`, `id_motivo`, `id_venta`, `comentario`, `estado`)
-VALUES ('2025-05-22', 303, 3, 503, 'La talla del producto no coincide con la solicitada.', 'Rechazado');
+VALUES ('2025-05-22', 303, 3, 503, 'La talla del producto no coincide con la solicitada.', 'CANCELADA');
 
 INSERT INTO `devolucion` (`fecha_emision`, `id_dev`, `id_motivo`, `id_venta`, `comentario`, `estado`)
-VALUES ('2025-05-23', 304, 4, 504, 'Decidí que ya no lo necesito.', 'Pendiente');
+VALUES ('2025-05-23', 304, 4, 504, 'Decidí que ya no lo necesito.', 'SOLICITADA');
 
 INSERT INTO `devolucion` (`fecha_emision`, `id_dev`, `id_motivo`, `id_venta`, `comentario`, `estado`)
-VALUES ('2025-05-24', 305, 5, 505, 'Me llegó un producto completamente distinto al que pedí.', 'Aprobado');
+VALUES ('2025-05-24', 305, 5, 505, 'Me llegó un producto completamente distinto al que pedí.', 'ACEPTADA');
 
 
 INSERT INTO `devolucion_productos` (`cantidad`, `devolucion_id_dev`, `id_producto`)
