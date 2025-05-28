@@ -12,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,9 +33,9 @@ public class Devolucion {
     @JoinColumn(name = "devolucion_id")
     private List<productoDevuelto> productos;
 
-    @ManyToOne
-    @JoinColumn(name = "idMotivo")
-    private motivoDevolucion razon;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "motivo", nullable = false)
+    private motivoDev motivo;
 
     @Column(nullable = true, length = 250)
     private String comentario;

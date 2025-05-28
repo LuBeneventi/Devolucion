@@ -73,7 +73,7 @@ public class devolucionController {
                 .map(devExistente -> {
                     // Campos editables
                     devExistente.setComentario(nuevaDev.getComentario());
-                    devExistente.setRazon(nuevaDev.getRazon());
+                    devExistente.setMotivo(nuevaDev.getMotivo());
                     devExistente.setProductos(nuevaDev.getProductos());
 
                     Devolucion actualizada = dService.crear(devExistente);
