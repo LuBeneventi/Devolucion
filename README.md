@@ -13,17 +13,7 @@ VALUES (4, 'No estoy satisfecho con el producto', 'TERMINADA', '2025-05-25', 104
 
 
 -- Producto devuelto asociado a devolución con id 1
-INSERT INTO `producto_devuelto`(`id`, `cantidad`, `id_producto`, `devolucion_id`) 
-VALUES (1, 2, 1001, 1);
-
--- Producto devuelto asociado a devolución con id 2
-INSERT INTO `producto_devuelto`(`id`, `cantidad`, `id_producto`, `devolucion_id`) 
-VALUES (2, 1, 1005, 2);
-
--- Producto devuelto asociado a devolución con id 3
-INSERT INTO `producto_devuelto`(`id`, `cantidad`, `id_producto`, `devolucion_id`) 
-VALUES (3, 3, 1003, 3);
-
--- Producto devuelto asociado a devolución con id 4
-INSERT INTO `producto_devuelto`(`id`, `cantidad`, `id_producto`, `devolucion_id`) 
-VALUES (4, 1, 1007, 4);
+INSERT INTO `producto_devuelto`(`id`, `cantidad`, `id_producto`, `dev_id`) VALUES (1, 2, 1001, 1);
+INSERT INTO `producto_devuelto`(`id`, `cantidad`, `id_producto`, `dev_id`) VALUES (2, 1, 1005, 2);
+INSERT INTO `producto_devuelto`(`id`, `cantidad`, `id_producto`, `dev_id`) VALUES (3, 3, 1003, 3);
+INSERT INTO `producto_devuelto`(`id`, `cantidad`, `id_producto`, `dev_id`) VALUES (4, 1, 1007, 4);

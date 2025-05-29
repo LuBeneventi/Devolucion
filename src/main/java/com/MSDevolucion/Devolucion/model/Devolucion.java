@@ -29,8 +29,7 @@ public class Devolucion {
     @Column(nullable = false)
     private int idVenta;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "devolucion_id")
+    @OneToMany(mappedBy = "dev",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<productoDevuelto> productos;
 
     @Enumerated(EnumType.STRING)

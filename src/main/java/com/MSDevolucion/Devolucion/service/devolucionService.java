@@ -2,6 +2,7 @@ package com.MSDevolucion.Devolucion.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,12 +67,12 @@ public class devolucionService {
         return dRepo.save(dev);
     }
 
-    public Boolean eliminar(int id){
+    public void eliminar(int id){
         Devolucion d = dRepo.findById(id).orElseThrow();
         if(dRepo.existsById(id) && (d.getEstado() == estadoDev.CANCELADA) || d.getEstado() == estadoDev.TERMINADA){
             dRepo.deleteById(id);
-            return true;
+            return;
         }
-        return false;
+        throw new NoSuchElementException("Fallo al eliminar");
     }
 }
