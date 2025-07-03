@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.MSDevolucion.Devolucion.model.Devolucion;
@@ -112,5 +113,14 @@ public class devolucionController {
         } else {
             return ResponseEntity.ok(dService.listarPorVenta(idVenta));
         }
+    }
+
+    @GetMapping("/correo")
+    public ResponseEntity<List<Devolucion>> obtenerPorCorreo(@RequestParam String correo) {
+        List<Devolucion> devoluciones = dService.listarPorCorreo(correo);
+        if (devoluciones.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(devoluciones);
     }
 }

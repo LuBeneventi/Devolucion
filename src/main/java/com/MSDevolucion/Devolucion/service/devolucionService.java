@@ -75,4 +75,7 @@ public class devolucionService {
         }
         throw new NoSuchElementException("Fallo al eliminar");
     }
+    public List<Devolucion> listarPorCorreo(String correo){
+        return dRepo.findBycorreoCliente(correo);
+    }
 }

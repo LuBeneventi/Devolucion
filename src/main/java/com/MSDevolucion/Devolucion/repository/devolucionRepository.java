@@ -10,4 +10,5 @@ import com.MSDevolucion.Devolucion.model.Devolucion;
 @Repository
 public interface devolucionRepository extends JpaRepository<Devolucion, Integer>{
     List<Devolucion> findByIdVenta(int idVenta);  
+    List<Devolucion> findBycorreoCliente(String correo);
 }

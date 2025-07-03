@@ -11,7 +11,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +28,10 @@ public class Devolucion {
     @Column(nullable = false)
     private int idVenta;
 
-    @OneToMany(mappedBy = "dev",cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "correo_cliente", nullable = false)
+    private String correoCliente;
+
+    @OneToMany(mappedBy = "dev", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<productoDevuelto> productos;
 
     @Enumerated(EnumType.STRING)
