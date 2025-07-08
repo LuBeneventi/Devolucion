@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.MSDevolucion.Devolucion.model.Devolucion;
 import com.MSDevolucion.Devolucion.model.estadoDev;
+import com.MSDevolucion.Devolucion.model.productoDevuelto;
 import com.MSDevolucion.Devolucion.repository.devolucionRepository;
 
 @Service
@@ -21,6 +22,11 @@ public class devolucionService {
 
         if(devolucion.getMotivo() == null){
              throw new IllegalArgumentException("El motivo de devolución no puede ser nulo");
+        }
+        if(devolucion.getProductos() != null){
+            for(productoDevuelto p : devolucion.getProductos()){
+                p.setDev(devolucion);
+            }
         }
         devolucion.setEstado(estadoDev.SOLICITADA);
         devolucion.setFechaSolicitud(LocalDate.now());

@@ -27,7 +27,7 @@ public class devolucionController {
     @Autowired
     private devolucionService dService;
 
-    @PostMapping("/generar")
+    @PostMapping
     public ResponseEntity<Devolucion> crear(@RequestBody Devolucion devolucion) {
         return ResponseEntity.ok(dService.crear(devolucion));
     }
@@ -68,7 +68,7 @@ public class devolucionController {
         }
     }
 
-    @PutMapping("/{id}/editar")
+    @PutMapping("/{id}")
     public ResponseEntity<Devolucion> editarDevolucion(@PathVariable Integer id, @RequestBody Devolucion nuevaDev) {
         return dService.buscarPorId(id)
                 .map(devExistente -> {
@@ -83,7 +83,7 @@ public class devolucionController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}/eliminar")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarDevolucion(@PathVariable int id) {
         try {
             dService.eliminar(id);
